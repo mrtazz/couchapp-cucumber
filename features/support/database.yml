@@ -1,0 +1,7 @@
+test:
+  host: localhost
+  port: 5984
+  database: db-test
+  authdb: auth-db-test
+  admin: admin
+  password: password
