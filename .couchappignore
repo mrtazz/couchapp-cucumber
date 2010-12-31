@@ -1,0 +1,7 @@
+[
+  "Rakefile",
+  "Gemfile",
+  "Gemfile.lock",
+  "features*",
+  "config*"
+]
