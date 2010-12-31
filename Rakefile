@@ -2,8 +2,19 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-task :default => 'features'
+CONFIG = File.open('config/database.yml') { |yf| YAML::load yf  }
 
-Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "--format pretty" # Any valid command line option can go here.
+task :default => ['test:deploy', 'test:features']
+
+namespace :test do
+
+  task :deploy do
+    c = CONFIG["test"]
+    sh "couchapp push http://#{c['admin']}:#{c['password']}@#{c['host']}:#{c['port']}/#{c['database']}"
+  end
+
+  Cucumber::Rake::Task.new(:features) do |t|
+    t.cucumber_opts = "--format pretty"
+  end
+
 end
