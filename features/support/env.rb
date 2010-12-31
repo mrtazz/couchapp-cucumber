@@ -4,7 +4,7 @@ require 'capybara/cucumber'
 require 'yaml'
 require 'features/support/couchdb_helpers'
 
-env = File.open('features/support/database.yml') { |yf| YAML::load yf  }["test"]
+env = File.open('config/database.yml') { |yf| YAML::load yf  }["test"]
 
 module WithinHelpers
   def with_scope(locator)
