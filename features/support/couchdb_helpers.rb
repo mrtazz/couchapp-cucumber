@@ -11,8 +11,8 @@ class CouchDBHelper
 
   def signup_user(authdb, username = "", password = "")
     # create salt and hashed password
-    salt = "a salt"
-    password_sha = Digest::SHA1.new.hexdigest(salt + password)
+    salt = "salt"
+    password_sha = Digest::SHA1.new.hexdigest(password + salt)
 
     user = {:_id => "org.couchdb.user:#{username}", :name => username,
             :roles => [], :type => "user", :salt => salt,
@@ -23,7 +23,7 @@ class CouchDBHelper
                                    }
            }
 
-    @couch.put("/#{authdb}/org.couchdb.user:#{username}",
+    @couch.put("/#{authdb}/org.couchdb.user%3A#{username}",
                Yajl::Encoder.encode(user))
   end
 
