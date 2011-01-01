@@ -23,8 +23,10 @@ Before do
   helper.change_auth_db(env["authdb"])
 end
 
+# cleanup CouchDB after scenarios
 After do
   helper = CouchDBHelper.new(env["host"], env["port"], env["admin"], env["password"])
   helper.change_auth_db
   helper.delete_db(env["authdb"])
+  helper.clear_db(env["database"])
 end
