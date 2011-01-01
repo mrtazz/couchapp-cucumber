@@ -23,6 +23,11 @@ Before do
   helper.change_auth_db(env["authdb"])
 end
 
+Before "@withuser" do
+  helper = CouchDBHelper.new(env["host"], env["port"], env["admin"], env["password"])
+  helper.signup_user(env["authdb"], "User", "secret")
+end
+
 # cleanup CouchDB after scenarios
 After do
   helper = CouchDBHelper.new(env["host"], env["port"], env["admin"], env["password"])
