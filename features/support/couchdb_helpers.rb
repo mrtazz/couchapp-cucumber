@@ -41,8 +41,8 @@ class CouchDBHelper
   def clear_db(dbname)
     docs = Yajl::Parser.new.parse(@couch.get("/#{dbname}/_all_docs").body)["rows"]
     docs.each do |d|
-      unless d["_id"] == "_design/couchapp"
-        @couch.delete("/#{dbname}/#{d['_id']}?rev=#{d['value']['rev']}")
+      unless d["id"] == "_design/couchapp"
+        @couch.delete("/#{dbname}/#{d['id']}?rev=#{d['value']['rev']}")
       end
     end
   end
