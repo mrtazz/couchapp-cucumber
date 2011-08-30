@@ -2,7 +2,7 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
 require 'yaml'
-require 'features/support/couchdb_helpers'
+require File.join File.dirname(__FILE__), 'couchdb_helpers'
 
 env = File.open('config/database.yml') { |yf| YAML::load yf  }["test"]
 
