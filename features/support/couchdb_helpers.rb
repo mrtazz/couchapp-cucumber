@@ -1,6 +1,6 @@
 require 'digest/sha1'
 require 'yajl'
-require 'features/support/couchdb_api'
+require File.join File.dirname(__FILE__), 'couchdb_api"
 
 class CouchDBHelper
 
