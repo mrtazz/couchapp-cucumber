@@ -1,7 +1,7 @@
 [
-  "Rakefile",
-  "Gemfile",
-  "Gemfile.lock",
-  "features*",
-  "config*"
+  "^Rakefile$",
+  "^Gemfile$",
+  "^Gemfile\\.lock$",
+  "^features",
+  "^config"
 ]
